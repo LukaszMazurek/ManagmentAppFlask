@@ -1,10 +1,50 @@
 """
-Put your models here
+Put your models here.
 To create databse follow the commands.
-*Run python shell in managment_app folder
+Run python shell in managment_app folder
 *from app import database.db
+*db.create_all()
 *exit()
 This will create all your models and put
-your databse in app folder
+your database in app folder
 """
 
+from app import db
+from app import UserMixin
+
+
+class User(UserMixin, db.Model):
+    __tablename__ = 'user'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(15), unique=True, nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
+
+
+class Group(db.Model):
+    __tablename__ = 'group'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(15), unique=True, nullable=False)
+    text = db.Column(db.String(100), unique=True, nullable=False)
+
+
+class Meeting(db.Model):
+    __tablename__ = 'meeting'
+    id = db.Column(db.Integer, primary_key=True)
+    group_id = db.Column(db.Integer, db.ForeignKey('group.id'), 
+                        nullable=False)
+    date_start = db.Column(db.Date, nullable=False)
+    date_end = db.Column(db.Date, nullable=False)
+    time_start = db.Column(db.Time, nullable=False)
+    time_end = db.Column(db.Time, nullable=False)
+    place = db.Column(db.String(100), nullable=True)
+    group_meeting = db.relationship('Group', foreign_keys=[group_id])
+
+
+class UserGroup(db.Model):
+    __tablename__ = 'user_group'
+    user_group_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=False)
+    user = db.relationship('User', foreign_keys=[user_id])
+    group = db.relationship('Group', foreign_keys=[group_id])

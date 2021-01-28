@@ -10,6 +10,9 @@ Sign Up
 <link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
 {% endblock %}
 
+{% if success %}
+  {% include '/partials/alert_success.html' %}
+{% else %}
 {% block content %}
 <div class="container">
 
@@ -25,3 +28,4 @@ Sign Up
 
 </div> <!-- /container -->
 {% endblock %}
+{% endif %}
