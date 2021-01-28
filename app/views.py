@@ -19,9 +19,6 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-@APP.route('/')
-def index():
-    return render_template('index.html')
 
 
 @APP.route('/login', methods=['GET', 'POST'])
@@ -47,7 +44,7 @@ def signup():
     return render_template('signup.html', form=form, success=False)
 
 
-@login_required
+
 @APP.route('/dashboard')
 def dashboard():
     return '<h1>dashboard</h1>'
