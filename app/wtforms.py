@@ -7,7 +7,7 @@ and rendering library for Python web development.
 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
-from wtforms.fields.html5 import DateField, TimeField, DateTimeField
+# from wtforms.fields.html5 import DateField, TimeField, DateTimeField
 from wtforms.validators import InputRequired, Email, Length
 
 
