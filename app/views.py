@@ -31,15 +31,12 @@ def login():
     if form.validate_on_submit():
         try:
             user = User.query.filter_by(username=form.username.data).first()
-        except Exception:
-            state = 'bad_login'
-        try:
             if check_password_hash(user.password, form.password.data):
                 login_user(user)
                 return redirect(url_for('dashboard'))
         except Exception:
-            state = 'bad_pass'
-        return render_template('login.html', form=form, state=state)
+            state = 'bad_data'
+            return render_template('login.html', form=form, state=state)
     return render_template('login.html', form=form, state=state)
 
 
