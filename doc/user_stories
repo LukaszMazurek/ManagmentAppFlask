@@ -33,5 +33,5 @@ Actors: User
 7: Search users
     user can search users by nickname
 
-8: Making group
+8: Making groups
     user can make a group
