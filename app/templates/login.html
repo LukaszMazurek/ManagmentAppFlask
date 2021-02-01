@@ -10,6 +10,7 @@ Login
 <link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
 {% endblock %}
 
+
 {% block content %}
     <div class="container">
 
@@ -18,8 +19,10 @@ Login
         {{ form.hidden_tag() }}
         {{ wtf.form_field(form.username) }}
         {{ wtf.form_field(form.password) }}
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+        {% if state == 'bad_data' %}
+          <div class="alert alert-danger" role="alert"> This data does not match for any user </div>
+        {% endif %}
       </form>
-
-    </div> <!-- /container -->
+    </div>
 {% endblock %}
