@@ -2,7 +2,7 @@
 Put your models here.
 To create databse follow the commands.
 Run python shell in managment_app folder
-*from app import database.db
+*from app import db
 *db.create_all()
 *exit()
 This will create all your models and put
