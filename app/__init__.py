@@ -17,4 +17,8 @@ LOGIN_MANAGER.init_app(APP)
 LOGIN_MANAGER.login_view = 'login'
 
 from app import models
-from app import views
+from app import auth_views
+from app import user_views
+
+APP.register_blueprint(auth_views.auth, url_prefix='/')
+APP.register_blueprint(user_views.user, url_prefix='/user')
