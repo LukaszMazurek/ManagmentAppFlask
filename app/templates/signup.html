@@ -7,7 +7,7 @@ Sign Up
 
 {% block styles %}
 {{super()}}
-<link rel="stylesheet" href="{{url_for('.static', filename='signin.css')}}">
+<link rel="stylesheet" href="{{url_for('static', filename='signin.css')}}">
 {% endblock %}
 
 {% block content %}
@@ -17,11 +17,16 @@ Sign Up
     {{ form.hidden_tag() }}
     {{ wtf.form_field(form.username) }}
     {{ wtf.form_field(form.password) }}
-    {{ wtf.form_field(form.repeat_password) }}
     {{ wtf.form_field(form.email) }}
     <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
-    {% if success %}
-      {% include '/partials/alert_success.html' %}
+    {% if state == 'data_taken' %}
+        <div class="alert alert-danger" role="alert"> 
+            This data is taken 
+        </div>
+    {% elif state == 'good_data' %}
+      <div class="alert alert-success" role="alert"> 
+          <li><a href="/">Success! (click for home page)</a></li> 
+      </div>
     {% endif %}
   </form>
 </div>
