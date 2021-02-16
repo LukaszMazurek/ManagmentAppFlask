@@ -16,7 +16,7 @@ from app import db, LOGIN_MANAGER
 from app.models import User
 
 
-auth = Blueprint('auth.py', __name__)
+auth = Blueprint('auth', __name__)
 LOGIN_MANAGER.login_view = "/login"
 
 

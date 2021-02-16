@@ -10,25 +10,9 @@ Actors: User
     Actor gives login, email, password
     Actor get an email with coniformation
 
-3: Add a meeting
-    User can add meeting in the group
-    All group praticpants can see the date and time of meeting
-    If collision will ocure user can't add a meeting.
-    Meeting will be deletet after end of mmeting.
-
-4: Delete meeting
-    User can delete meeting in the group
-    All group members can delete meetings but participant
-    heve to add a note of reson
-    Meeting will be change by note
-
 5: Forum
     Members of the group have their own Forum
     All group members can add a post on the forum
-
-6: Nearly meetings
-    User can see incoming meetings
-    Remmminder will be send, day before meeting
 
 7: Search users
     user can search users by nickname

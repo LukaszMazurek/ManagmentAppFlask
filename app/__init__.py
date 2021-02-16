@@ -2,6 +2,7 @@ from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin
+from flask_migrate import Migrate
 
 
 APP = Flask(__name__, static_folder='static')
@@ -12,6 +13,7 @@ APP.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 
 Bootstrap(APP)
 db = SQLAlchemy(APP)
+migrate = Migrate(APP, db)
 LOGIN_MANAGER = LoginManager()
 LOGIN_MANAGER.init_app(APP)
 LOGIN_MANAGER.login_view = 'login'

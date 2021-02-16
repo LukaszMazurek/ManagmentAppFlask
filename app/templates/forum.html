@@ -23,27 +23,17 @@ Dashboard
     </div>
   </div>
   <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-        <h1 class="page-header">Welcome, {{ name }}</h1>
+        <h1 class="page-header">All posts</h1>
    </div>
    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
    <table class="table table-hover table-dark" style="width:100%">
-   <tr>
-   {% for group_data in groups_data %}
-   <td>
-      {{ group_data[0] }}
-    </td>
-    <td>
-      <button class="btn btn-link" type="submit">
-        <a href="forum/{{group_data[1]}}">Forum</a>
-      </button>
-    </td>
-    <td>
-      <button class="btn btn-link" type="submit">
-        <a href="add_user/{{user.id}}">Add your friend</a>
-      </button>
-    </td>
-   </tr>
-   {% endfor %}
+    <tr>
+        {% for post in posts %}
+            <td>
+                {{ post }}
+            </td>
+        {% endfor %}
+    </tr>
    </table>
    </div>
 </div>

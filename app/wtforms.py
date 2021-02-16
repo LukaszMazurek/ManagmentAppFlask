@@ -27,3 +27,9 @@ class RegisterForm(FlaskForm):
                                          Length(min=8, max=80)])
     email = StringField('email',
                         validators=[InputRequired(), Email()])
+
+
+class MakeGroup(FlaskForm):
+    group_name = StringField('name',
+                             validators=[InputRequired(),
+                                         Length(min=4, max=15)])
