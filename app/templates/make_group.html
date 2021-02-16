@@ -27,7 +27,7 @@ Make group
     <div id="group" class="container">
         <form class="form-signin" method="POST" action="make_group">
             {{ form.hidden_tag() }}
-            {{ form.group_name(size=40) }}
+            {{ form.string_field(size=40) }}
             <button class="btn btn-default btn-success" type="submit">Submit</button>
         {% if flag == True %}
         <div class="alert alert-success" role="alert"> 

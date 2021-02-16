@@ -6,7 +6,7 @@ and rendering library for Python web development.
 
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, TextAreaField, SubmitField, TextField
 # from wtforms.fields.html5 import DateField, TimeField, DateTimeField
 from wtforms.validators import InputRequired, Email, Length
 
@@ -29,7 +29,12 @@ class RegisterForm(FlaskForm):
                         validators=[InputRequired(), Email()])
 
 
-class MakeGroup(FlaskForm):
-    group_name = StringField('name',
+class BaseStringField(FlaskForm):
+    string_field = StringField('name',
                              validators=[InputRequired(),
                                          Length(min=4, max=15)])
+
+class MakePost(FlaskForm):
+    message = TextAreaField('messsage',
+                            validators=[InputRequired(),
+                                        Length(min=1)])

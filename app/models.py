@@ -23,25 +23,27 @@ class User(UserMixin, db.Model):
     path = db.Column(db.String(100), nullable=True)
 
 
-class Club(db.Model):
-    __tablename__ = 'club'
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(15), unique=True, nullable=False)
-
-
 class UserGroup(db.Model):
     __tablename__ = 'user_group'
-    user_group_id = db.Column(db.Integer, primary_key=True)
+    group_user_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    group_id = db.Column(db.Integer, db.ForeignKey('club.id'), nullable=False)
+    group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=False)
     user = db.relationship('User', foreign_keys=[user_id])
-    group = db.relationship('Club', foreign_keys=[group_id])
+    group = db.relationship('Group', foreign_keys=[group_id])
+
+
+class Group(db.Model):
+    __tablename__ = 'group'
+    id = db.Column(db.Integer, primary_key=True)
+    group_name = db.Column(db.String(16), unique=True, nullable=False)
 
 
 class Post(db.Model):
     __tablename__ = 'post'
     id = db.Column(db.Integer, primary_key=True)
+    group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=False)
+    username = username = db.Column(db.String(15), nullable=True)
     creation_time = db.Column(db.DateTime,
                               nullable=False, default=datetime.now())
-    group_id = db.Column(db.Integer, db.ForeignKey('club.id'), nullable=False)
-    post = db.Column(db.Text, nullable=True, default='New message')
+    post = db.Column(db.Text, nullable=True, default='Default message')
+    group = db.relationship('Group', foreign_keys=[group_id])
