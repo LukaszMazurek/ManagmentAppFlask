@@ -27,7 +27,6 @@ class Group(db.Model):
     __tablename__ = 'group'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(15), unique=True, nullable=False)
-    text = db.Column(db.String(100), unique=True, nullable=False)
 
 
 class Meeting(db.Model):
